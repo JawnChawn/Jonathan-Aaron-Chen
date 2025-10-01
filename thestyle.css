@@ -1,0 +1,519 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* ✨ UPDATED ✨ Default pink/yellow gradient */
+    background: radial-gradient(circle 500px at top, #c4d473, #d550ad);
+    transition: background 0.5s ease; /* ✨ NEW ✨ Smooth transition */
+    position: relative;
+}
+
+/* ✨ REMOVED OLD about-mode background and background-image hiding ✨ */
+/* ✨ NEW about-mode gradient background ✨ */
+body.about-mode {
+    /* ✨ UPDATED ✨ green radial gradient instead of flat forestgreen */
+    background: radial-gradient(circle 500px at top, #228B22, #154f10);
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('texture-1.jpg');
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.25; 
+    z-index: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+
+
+header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-top: 10px; /* Move the header down from the very top */
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5rem; /* Adjust the font size */
+    margin: 0;
+    padding: 0; /* Remove padding if not needed */
+}
+
+.button-container {
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 210px); /* Fixed size columns */
+    gap: 30px;
+    justify-content: flex; /* Center horizontally */
+    padding: 20px;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+.box {
+    width: 100%;
+    height: 210px; /* Match grid column width */
+    background: rgba(168, 195, 216, 0.3);
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    display: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: flex;
+}
+
+
+.box:hover {
+    transform: scale(1.05); /* Slightly expand the button */
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Optional: Add unique styles for each button if needed */
+.box-1 { 
+    background: rgba(255, 99, 71, 0.3); 
+    border: none;
+}
+.box-2 { 
+    background: rgba(255, 165, 0, 0.3); 
+    border: none;
+}  
+.box-3 { 
+    background: rgba(255, 215, 0, 0.3); 
+    border: none;
+} 
+
+.box-4 { 
+    background: rgba(50, 205, 50, 0.3); 
+    border: none;
+} 
+
+.box-5 { 
+    background: rgba(30, 144, 255, 0.3); 
+    border: none;
+} 
+.box-6 { 
+    background: rgba(138, 43, 226, 0.3); 
+    border: none;
+}
+.box-7 { 
+    background: rgba(255, 20, 147, 0.3); 
+    border: none;
+} 
+.box-8 { 
+    background: rgba(0, 255, 255, 0.3); 
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* START OF THE DARK MODE CSS */
+body.dark-mode {
+    /* Keep your dark gradient as background */
+    background: radial-gradient(circle 500px at top, #1e1e1e, #000000);
+    transition: filter 0.3s ease;
+}
+
+/* Dark mode overlay for stars (above texture but below content) */
+body.dark-mode::before {
+    content: '';
+    position: fixed;       /* fixed so it stays in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Stars.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto; /* true-to-size */
+    z-index: 1;            /* above texture (.background-image z-index:0) */
+    pointer-events: none;  /* allows clicks through stars */
+}
+
+
+body.dark-mode .box {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f0f0f0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .box:hover {
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+#toggle-theme {
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+
+}
+
+body.dark-mode #toggle-theme {
+    background-color: #fff;
+    color: #000;
+
+}
+
+body.dark-mode {
+    transition: filter 0.3s ease;
+}
+
+
+body.dark-mode .box {
+    border: none;
+}
+
+body.dark-mode #toggle-theme:hover {
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    transform: scale(1.05);
+
+}
+
+#toggle-theme:hover {
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    transform: scale(1.05);
+
+}
+
+/* Sparkle base — animation always running */
+.sparkle {
+    animation: rainbowText 5s linear infinite;
+    color: white;
+    transition: 
+        background-position 1s ease, 
+        -webkit-text-fill-color 1s ease, 
+        color 1s ease, 
+        opacity 1s ease;
+    opacity: 1;
+    position: relative;
+    z-index: 10;
+}
+
+/* Rainbow animation only on .sparkle in dark mode */
+body.dark-mode .sparkle {
+    background: linear-gradient(90deg, orange, yellow,  cyan, violet, orange, yellow, cyan, violet);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowText 5s linear infinite;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes rainbowText {
+    0% { background-position: 200% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.dark-mode *:not(.sparkle) {
+    color: black !important;
+}
+
+body, .box, .background-image, h1, p, button {
+    transition: background-color 0.5s ease, color 0.5s ease, filter 0.5s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#about-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 1000px;
+    padding: 20px;
+    margin-bottom: 60px;
+    margin-top: 170px;
+    background: rgba(100, 100, 100, 0.6); 
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+}
+
+#about-section #close-about {
+    display: none !important;
+  }
+  
+
+/* Removed duplicate #about-section block */
+#about-section-images {
+    position: absolute;
+    display: flex;
+    max-width: 100%;
+    justify-content: flex-start;
+    padding-left: 20px;
+    z-index: 5;
+    flex-wrap: wrap; /* allows wrap on small screens */
+}
+
+/* 📸 Responsive LinkedIn Photo */
+.linkedin-photo {
+    width: 30vw; /* responsive to screen width */
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 7 / 4; /* maintain shape without fixed height */
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 2rem;
+    right: -30vw; /* hangs off the right side, but scales with screen */
+    z-index: 6;
+    background: white;
+}
+
+/* 🔘 Responsive Button */
+#close-about {
+    position: absolute;
+    top: 0.5rem;
+    left: -45vw;
+    z-index: 6;
+    padding: 0.5rem 1rem;
+    background-color: rgba(170, 167, 167, 0.7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition:
+        background-color 0.5s ease,
+        transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* 🔁 Hover Effect */
+#close-about:hover {
+    transform: scale(1.05);
+    background-color: rgba(170, 167, 167, 0.9);
+}
+
+@media (max-width: 768px) {
+    .linkedin-photo {
+        position: relative;
+        right: 0;
+        width: 80vw;
+        margin-top: 1rem;
+    }
+
+    #close-about {
+        position: relative;
+        left: 0;
+        margin-top: 0.5rem;
+    }
+
+    #about-section-images {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 0;
+    }
+}
+
+#main-content.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Certification Visuals still in works may not have stuff important*/
+#certification-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 1000px;
+    padding: 20px;
+    margin-bottom: 60px;
+    margin-top: 170px;
+    background: rgba(100, 100, 100, 0.6);
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Certification Images */
+  #certification-section-images {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto 0;
+    z-index: 3;
+    flex-wrap: wrap;
+  }
+  
+  /* Shown states */
+  #certification-section.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  #certification-section-images.show {
+    display: flex;
+    opacity: 1;
+  }
+  
+  /* Close Button */
+  #close-certification {
+    position: absolute;
+    top: 0.5rem;
+    left: -45vw;
+    z-index: 6;
+    padding: 0.5rem 1rem;
+    background-color: rgba(170, 167, 167, 0.7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition:
+      background-color 0.5s ease,
+      transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  #close-certification:hover {
+    transform: scale(1.05);
+    background-color: rgba(170, 167, 167, 0.9);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    #close-certification {
+      position: relative;
+      left: 0;
+      margin-top: 0.5rem;
+    }
+  
+    #certification-section-images {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 0;
+    }
+  }
+  
+  /* Fade effect for main content */
+  #main-content.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  
+  #main-content.hidden {
+    display: none;
+  }
+
+
+
+
+
+  /* Amongus Walking */
+  /* Wrapper acts as the hitbox */
+#character-wrapper {
+    position: absolute;
+    width: 15px;   /* smaller hitbox for collisions */
+    height: 15px;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+  }
+  
+  /* GIF itself stays same size */
+  #character {
+    width: 80px;   /* visual size */
+    height: auto;
+    position: absolute;
+    top: -20px;    /* center GIF over hitbox */
+    left: -20px;
+    pointer-events: none; /* GIF does not block clicks */
+  }
+  
+  #character.left {
+    transform: scaleX(-1); /* flip when moving left */
+  }
+  
+  /* Hover effect for buttons when hitbox overlaps */
+  .button-hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  
+      
+  
+  
+  
+  /* if your #character is an <img>, the background rules won't apply; use img rules instead:
+  #character { object-fit: contain; }
+  */
+  
+  
+  
+
+  
+
+

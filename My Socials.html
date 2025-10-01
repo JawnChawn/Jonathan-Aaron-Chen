@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Website</title>
+  <link rel="stylesheet" href="thestyle.css"/>
+ 
+
+  
+ <style>
+
+  
+    /* Add this to ensure responsiveness of your grid */
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,(220px, 1fr));
+      gap: 30px;
+      justify-content: center;
+      padding: 20px;
+      margin-top: 60px;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+    }
+
+    .hidden {
+  display: none !important;
+}
+
+    #about-section.show {
+      display: block;
+      opacity: 1;
+    }
+
+    #main-content.fade-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #close-about {
+      margin-top: 20px;
+    }
+
+    #about-section-images {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: relative;
+  max-width: 800px;
+  margin: 20px auto 0;
+  z-index: 3;
+}
+
+#about-section-images.show {
+  display: block;
+  opacity: 1;
+}
+
+/* certification tech*/
+#certification-section.show {
+      display: block;
+      opacity: 1;
+    }
+
+    #main-content.fade-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #close-certification {
+      margin-top: 20px;
+    }
+
+    #certification-section-images {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: relative;
+  max-width: 800px;
+  margin: 20px auto 0;
+  z-index: 3;
+}
+
+#certification-section-images.show {
+  display: block;
+  opacity: 1;
+}
+
+  </style>
+</head>
+
+<div id="about-section-images">
+  <button id="close-about" style="margin-top: 0px;" > OH GOD PLEASE TAKE ME BACK HOME I CAN'T TAKE IT ANYMORE </button>
+  <img src="linked_in.png" alt="LinkedIn" class="linkedin-photo" />
+</div>
+
+<div id="about-section">
+  <div class="about-box">  
+  <h2>About Me <span class="sparkle">AAAAAAAAAAAAAA</span></h2>
+  <p>Hello! I'm Jonathan Chen. Welcome to my About Me section. I'm a web developer, creative technologist, and Pokémon enthusiast. 😄</p>
+  <p>Here you'll find more details about my journey, hobbies, and inspirations. Feel free to poke around and explore!</p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  <p>  dag </p>
+  </div>
+</div>
+
+<div id="certification-section-images">
+  <button id="close-certification">Take Me Back</button>
+</div>
+
+<!-- Certification Content -->
+<div id="certification-section">
+  <div class="certification-box">  
+    <h2>Certifications <span class="sparkle">⭐</span></h2>
+    <p>Image Here</p>
+    <p>
+      Certified Scrum Master:
+      <a href="https://bcert.me/sspelrmke" target="_blank" rel="noopener noreferrer">
+        <span class="sparkle">View Certification</span>
+      </a>
+    </p>
+      </div>
+</div>
+
+<body>
+
+  <div id="character-wrapper">
+    <img id="character" src="AmongusIdle.gif" alt="Among Us">
+  </div>
+  
+  <div class="background-image"></div>
+  
+
+  <!-- Wrapper to center everything -->
+  <div id="main-content" style="z-index:2; display:flex; flex-direction:column; align-items:center; width:100%; max-width:1100px; padding:20px; box-sizing:border-box;">
+    <header>
+      <h1>My Socials (ﾉ◕ヮ◕)ﾉ<span class="sparkle">*:･ﾟ✧</span></h1>
+    </header>
+
+    <button id="toggle-theme" style= "margin-top:20px;">Toggle Dark Mode</button>
+
+
+    
+    
+    <div class="button-container">
+      <button class="box box-1" onclick="openLink('https://www.linkedin.com/in/jonaaronchen')">
+        <h1>LinkedIn</h1><p>rawr</p>
+      </button>
+      <button class="box box-2" onclick="openLink('https://github.com/JawnChawn')">
+        <h1>GitHub</h1><p>rahh</p>
+      </button>
+      <button class="box box-3" onclick="openLink('files/JonChenResume.pdf')">
+        <h1>Resume</h1><p>reaww</p>
+      </button>
+      <button class="box box-4" onclick="toggleAboutMe()">
+        <h1>About Me Page</h1><p>riaaah</p>
+      </button>
+      <button class="box box-5" onclick="openLink('https://docs.google.com/document/d/1yKe0sVdEexCawUJRNYdA-mpgpE4gT40kyq86ijI3SSA/edit?usp=sharing')">
+        <h1>Spotlight Projects</h1><p>ryaa</p>
+      </button>
+      <button class="box box-6" onclick="openLink('https://docs.google.com/document/d/1qyWBgdWeuxRTHVLKuNV9fUEdc5dODrVoEAuuL3kKbXc/edit?usp=sharing')">
+        <h1>Website Checklist</h1><p>ruaar</p>
+      </button>
+      <button class="box box-7" onclick="toggleCertifications()">
+        <h1>Certifications</h1><p>ruaaaih</p>
+      </button>
+      <button class="box box-8" onclick="openLink('https://krunker.io/?game=SV:ygnbd')">
+        <h1>Krunker.io</h1><p>rraahh</p>
+      </button>
+    </div>
+
+<div>
+  <p id="visit-counter" style="z-index:2; position:relative; font-size: 1.2rem; color: white;">Loading visits...</p>
+</div>
+
+  </div>
+
+  
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+    import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAzxZBPsmewfGxm0JuH6y7DRpxd9oCm1LA",
+      authDomain: "personal-website-counter-d175b.firebaseapp.com",
+      projectId: "personal-website-counter-d175b",
+      storageBucket: "personal-website-counter-d175b.appspot.com",
+      messagingSenderId: "246091206649",
+      appId: "1:246091206649:web:e8dd26f092ff23e59fb728",
+      measurementId: "G-N4WRSLYBBF"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    async function recordVisit() {
+      const now = new Date();
+      try {
+        await addDoc(collection(db, "visits"), {
+          timestamp: now.toISOString()
+        });
+      } catch (e) {
+        console.error("Error adding visit:", e);
+      }
+    }
+
+    async function getRecentVisitCount() {
+      const now = new Date();
+      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      const q = query(collection(db, "visits"), where("timestamp", ">", sevenDaysAgo.toISOString()));
+      const snapshot = await getDocs(q);
+      document.getElementById("visit-counter").textContent = `Visits within the last 7 days: ${snapshot.size}`;
+    }
+
+    recordVisit();
+    getRecentVisitCount();
+  </script>
+
+  <script>
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+
+    const toggleBtn = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+//toggle about me
+function toggleAboutMe() {
+  const main = document.getElementById('main-content');
+  const about = document.getElementById('about-section');
+  const images = document.getElementById('about-section-images');
+  const body = document.body;
+
+  // Add fade out for visual effect
+  main.classList.add('fade-out');
+
+  // Hide from flow a little earlier, say 400ms
+  setTimeout(() => {
+    main.classList.add('hidden');
+  }, 400);
+
+  // Show About Me at 500ms (after fade)
+  setTimeout(() => {
+    about.classList.add('show');
+    images.classList.add('show');
+    body.classList.add('about-mode');
+  }, 500);
+}
+
+
+document.getElementById('close-about').addEventListener('click', () => {
+  const main = document.getElementById('main-content');
+  const about = document.getElementById('about-section');
+  const images = document.getElementById('about-section-images');
+  const body = document.body;
+
+  about.classList.remove('show');
+  images.classList.remove('show');
+
+  setTimeout(() => {
+    main.classList.remove('fade-out');
+    main.classList.remove('hidden'); // Show it again
+    body.classList.remove('about-mode');
+  }, 500); // match your fade-in timing
+});
+
+
+
+
+
+
+
+
+function toggleCertifications() {
+  const main = document.getElementById('main-content');
+  const about = document.getElementById('certification-section');
+  const images = document.getElementById('certification-section-images');
+  const body = document.body;
+
+  // Fade out main
+  main.classList.add('fade-out');
+
+  // Hide from flow after fade
+  setTimeout(() => {
+    main.classList.add('hidden');
+  }, 400);
+
+  // Show About Me
+  setTimeout(() => {
+    about.classList.add('show');
+    images.classList.add('show');
+    body.classList.add('certification-mode');
+  }, 500);
+}
+
+// Close button handler
+document.getElementById('close-certification').addEventListener('click', () => {
+  const main = document.getElementById('main-content');
+  const about = document.getElementById('certification-section');
+  const images = document.getElementById('certification-section-images');
+  const body = document.body;
+
+  about.classList.remove('show');
+  images.classList.remove('show');
+
+  setTimeout(() => {
+    main.classList.remove('fade-out');
+    main.classList.remove('hidden');
+    body.classList.remove('certification-mode');
+  }, 500);
+});
+
+
+
+
+
+
+
+
+
+
+
+//amongus walking
+const wrapper = document.getElementById("character-wrapper");
+const character = document.getElementById("character");
+
+let posX = 20, posY = 20;
+let speed = 3;
+let facing = "right";
+let keys = {};
+let currentState = "idle";
+
+function gameLoop() {
+  let moved = false;
+
+  if (keys["w"] || keys["ArrowUp"]) { posY -= speed; moved = true; }
+  if (keys["s"] || keys["ArrowDown"]) { posY += speed; moved = true; }
+  if (keys["a"] || keys["ArrowLeft"]) { posX -= speed; facing = "left"; moved = true; }
+  if (keys["d"] || keys["ArrowRight"]) { posX += speed; facing = "right"; moved = true; }
+
+  // Move wrapper (hitbox)
+  wrapper.style.left = posX + "px";
+  wrapper.style.top = posY + "px";
+
+  // Flip GIF
+  character.style.transform = facing === "left" ? "scaleX(-1)" : "scaleX(1)";
+
+  // Update GIF
+  if (moved && currentState !== "walk") {
+    character.src = "AmongusWalk.gif";
+    currentState = "walk";
+  } else if (!moved && currentState !== "idle") {
+    character.src = "AmongusIdle.gif";
+    currentState = "idle";
+  }
+
+  // Check overlap with buttons
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(btn => {
+    const rect = btn.getBoundingClientRect();
+    const charRect = wrapper.getBoundingClientRect(); // hitbox used
+
+    const overlap = !(
+      charRect.right < rect.left ||
+      charRect.left > rect.right ||
+      charRect.bottom < rect.top ||
+      charRect.top > rect.bottom
+    );
+
+    if (overlap) btn.classList.add("button-hover");
+    else btn.classList.remove("button-hover");
+  });
+
+  requestAnimationFrame(gameLoop);
+}
+
+// Interact with E key
+document.addEventListener("keydown", e => {
+  keys[e.key] = true;
+
+  if (e.key.toLowerCase() === "e") {
+    const charRect = wrapper.getBoundingClientRect();
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(btn => {
+      const rect = btn.getBoundingClientRect();
+      const overlap = !(
+        charRect.right < rect.left ||
+        charRect.left > rect.right ||
+        charRect.bottom < rect.top ||
+        charRect.top > rect.bottom
+      );
+      if (overlap) btn.click(); // only first overlap triggers
+    });
+  }
+});
+
+document.addEventListener("keyup", e => { keys[e.key] = false; });
+
+gameLoop();
+
+
+
+
+
+
+  </script>
+
+
+
+  
+</body>
+</html>
