@@ -143,7 +143,13 @@
   </div>
   
   <div class="background-image"></div>
-  
+
+  <!-- HUD controls (place near top of <body>) -->
+<div class="hud-controls" role="status" aria-live="polite" aria-label="controls help">
+  <span class="hud-line"><strong>Walk:</strong> WASD</span>
+  <span class="hud-line"><strong>Interact:</strong> E</span>
+</div>
+
 
   <!-- Wrapper to center everything -->
   <div id="main-content" style="z-index:2; display:flex; flex-direction:column; align-items:center; width:100%; max-width:1100px; padding:20px; box-sizing:border-box;">
@@ -268,9 +274,12 @@ function toggleAboutMe() {
   const about = document.getElementById('about-section');
   const images = document.getElementById('about-section-images');
   const body = document.body;
+  const hud = document.querySelector('.hud-controls');
 
   // Add fade out for visual effect
   main.classList.add('fade-out');
+  hud.classList.add('fade-out');
+
 
   // Hide from flow a little earlier, say 400ms
   setTimeout(() => {
@@ -291,6 +300,8 @@ document.getElementById('close-about').addEventListener('click', () => {
   const about = document.getElementById('about-section');
   const images = document.getElementById('about-section-images');
   const body = document.body;
+  const hud = document.querySelector('.hud-controls');
+
 
   about.classList.remove('show');
   images.classList.remove('show');
@@ -298,6 +309,7 @@ document.getElementById('close-about').addEventListener('click', () => {
   setTimeout(() => {
     main.classList.remove('fade-out');
     main.classList.remove('hidden'); // Show it again
+    hud.classList.remove('fade-out');
     body.classList.remove('about-mode');
   }, 500); // match your fade-in timing
 });
@@ -314,9 +326,13 @@ function toggleCertifications() {
   const about = document.getElementById('certification-section');
   const images = document.getElementById('certification-section-images');
   const body = document.body;
+  const hud = document.querySelector('.hud-controls');
+
 
   // Fade out main
   main.classList.add('fade-out');
+  hud.classList.add('fade-out');
+
 
   // Hide from flow after fade
   setTimeout(() => {
@@ -337,6 +353,8 @@ document.getElementById('close-certification').addEventListener('click', () => {
   const about = document.getElementById('certification-section');
   const images = document.getElementById('certification-section-images');
   const body = document.body;
+  const hud = document.querySelector('.hud-controls');
+
 
   about.classList.remove('show');
   images.classList.remove('show');
@@ -344,6 +362,7 @@ document.getElementById('close-certification').addEventListener('click', () => {
   setTimeout(() => {
     main.classList.remove('fade-out');
     main.classList.remove('hidden');
+    hud.classList.remove('fade-out');
     body.classList.remove('certification-mode');
   }, 500);
 });
@@ -363,7 +382,7 @@ const wrapper = document.getElementById("character-wrapper");
 const character = document.getElementById("character");
 
 let posX = 20, posY = 20;
-let speed = 3;
+let speed = 4;
 let facing = "right";
 let keys = {};
 let currentState = "idle";

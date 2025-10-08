@@ -167,7 +167,7 @@ body.dark-mode::before {
 
 
 body.dark-mode .box {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.099);
     color: #f0f0f0;
     border: 1px solid #444;
 }
@@ -505,11 +505,75 @@ body, .box, .background-image, h1, p, button {
   
       
   
+
+
+
+
+
+
+
+
+
   
-  
-  /* if your #character is an <img>, the background rules won't apply; use img rules instead:
-  #character { object-fit: contain; }
-  */
+.hud-controls {
+  position: fixed;
+  top: 1rem;
+  left: 5rem;
+  z-index: 2;                /* above everything */
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1;
+  pointer-events: none;          /* doesn't block clicks — remove if you want it clickable */
+  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.06); /* light translucent base for default (good on dark backgrounds) */
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Slightly different look in light/default site (if your page has bright background) */
+body:not(.dark-mode) .hud-controls {
+  color: rgba(0,0,0,0.85);
+  background: rgba(255, 255, 255, 0.875);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Explicit dark-mode override (if you use body.dark-mode) */
+body.dark-mode .hud-controls {
+  color: rgba(255,255,255,0.95);
+  background: rgba(218, 218, 218, 0.28);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Styling the two lines */
+.hud-controls .hud-line {
+  display: block;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Make it smaller on very small screens */
+@media (max-width: 420px) {
+  .hud-controls {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+    top: 0.6rem;
+    left: 0.6rem;
+  }
+}
+
+.hud-controls.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
   
   
   
