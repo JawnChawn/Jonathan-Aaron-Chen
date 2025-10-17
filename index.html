@@ -89,6 +89,41 @@
   opacity: 1;
 }
 
+
+
+#resume-section.show {
+      display: block;
+      opacity: 1;
+    }
+
+    #main-content.fade-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #close-resume {
+      margin-top: 20px;
+      margin-left: 70px;
+
+    }
+
+    #resume-section-images {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: center;
+  margin-top: 65px;
+  max-width: 800px;
+  max-height: 600px;
+  z-index: 3;
+}
+
+#resume-section-images.show {
+  display: block;
+  opacity: 1;
+}
+
   </style>
 </head>
 
@@ -136,6 +171,27 @@
       </div>
 </div>
 
+
+
+<div id="resume-section">
+    <button id="close-resume">Take Me Back</button>
+</div>
+
+
+<div id="resume-section-images">
+  <div class="resume-box">  
+    <div class="iframe-wrapper">
+      <iframe 
+        src="Jonathan Aaron Chen.pdf" 
+        title="Jonathan Aaron Chen Resume">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+
+
+
 <body>
 
   <div id="character-wrapper">
@@ -154,7 +210,7 @@
   <!-- Wrapper to center everything -->
   <div id="main-content" style="z-index:2; display:flex; flex-direction:column; align-items:center; width:100%; max-width:1100px; padding:20px; box-sizing:border-box;">
     <header>
-      <h1>My Socials (ﾉ◕ヮ◕)ﾉ<span class="sparkle">*:･ﾟ✧</span></h1>
+      <h1>Jon (ﾉ◕ヮ◕)ﾉ<span class="sparkle">*:･ﾟ✧</span> Chen </h1>
     </header>
 
     <button id="toggle-theme" style= "margin-top:20px;">Toggle Dark Mode</button>
@@ -169,7 +225,7 @@
       <button class="box box-2" onclick="openLink('https://github.com/JawnChawn')">
         <h1>GitHub</h1><p>rahh</p>
       </button>
-      <button class="box box-3" onclick="openLink('files/JonChenResume.pdf')">
+      <button class="box box-3" onclick="toggleResume()">
         <h1>Resume</h1><p>reaww</p>
       </button>
       <button class="box box-4" onclick="toggleAboutMe()">
@@ -371,6 +427,55 @@ document.getElementById('close-certification').addEventListener('click', () => {
 
 
 
+
+
+
+
+function toggleResume() {
+  const main = document.getElementById('main-content');
+  const about = document.getElementById('resume-section');
+  const images = document.getElementById('resume-section-images');
+  const body = document.body;
+  const hud = document.querySelector('.hud-controls');
+
+
+  // Fade out main
+  main.classList.add('fade-out');
+  hud.classList.add('fade-out');
+
+
+  // Hide from flow after fade
+  setTimeout(() => {
+    main.classList.add('hidden');
+  }, 400);
+
+  // Show About Me
+  setTimeout(() => {
+    about.classList.add('show');
+    images.classList.add('show');
+    body.classList.add('resume-mode');
+  }, 500);
+}
+
+// Close button handler
+document.getElementById('close-resume').addEventListener('click', () => {
+  const main = document.getElementById('main-content');
+  const about = document.getElementById('resume-section');
+  const images = document.getElementById('resume-section-images');
+  const body = document.body;
+  const hud = document.querySelector('.hud-controls');
+
+
+  about.classList.remove('show');
+  images.classList.remove('show');
+
+  setTimeout(() => {
+    main.classList.remove('fade-out');
+    main.classList.remove('hidden');
+    hud.classList.remove('fade-out');
+    body.classList.remove('resume-mode');
+  }, 500);
+});
 
 
 

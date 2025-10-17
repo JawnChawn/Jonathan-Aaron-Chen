@@ -161,7 +161,7 @@ body.dark-mode::before {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: auto; /* true-to-size */
-    z-index: 1;            /* above texture (.background-image z-index:0) */
+    z-index: -1;            /* above texture (.background-image z-index:0) */
     pointer-events: none;  /* allows clicks through stars */
 }
 
@@ -466,6 +466,130 @@ body, .box, .background-image, h1, p, button {
   #main-content.hidden {
     display: none;
   }
+
+
+
+
+/* =========================
+   Resume Section
+   ========================= */
+#resume-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 1000px;
+    padding: 20px;
+    margin-bottom: 60px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+}
+
+/* =========================
+   Resume Modal / PDF Viewer
+   ========================= */
+#resume-section-images {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: fixed;                 /* overlay above all content */
+    top: 50px;                       /* space for top bar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;                       /* almost full width */
+    max-width: 100px;
+    height: calc(100vh - 70px);       /* leave space for top bar */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;          /* horizontal center */
+    align-items: flex-start;          /* start at top so scroll works */
+    overflow: auto;                   /* scrollable PDF */
+    flex-direction: column;
+    padding-top: 10px;
+    z-index: 999;
+}
+
+/* =========================
+   Close Button (top-left)
+   ========================= */
+#close-resume {
+    position: fixed;                 /* always visible */
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    background-color: rgba(170, 167, 167, 0.7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+#close-resume:hover {
+    transform: scale(1.05);
+    background-color: rgba(170, 167, 167, 0.9);
+}
+
+/* =========================
+   PDF iframe wrapper
+   ========================= */
+/* =========================
+   PDF iframe wrapper
+   ========================= */
+.iframe-wrapper {
+    width: 90%;                      /* center in modal */
+    max-width: 1000px;               /* optional limit */
+    margin: 0 auto;
+    overflow-y: auto;                /* vertical scroll only */
+    overflow-x: hidden;              /* prevent horizontal scroll */
+    height: 90vh;                    /* tall enough to scroll vertically */
+}
+
+.iframe-wrapper iframe {
+    width: 100%;                     /* fill the container width */
+    height: 100%;                    /* match wrapper height */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    display: block;
+    transform: none;                 /* remove scaling */
+    transform-origin: top left;
+}
+
+
+/* =========================
+   Show states
+   ========================= */
+#resume-section.show {
+    display: block;
+    opacity: 1;
+}
+
+#resume-section-images.show {
+    display: flex;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
