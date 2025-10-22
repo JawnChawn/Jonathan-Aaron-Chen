@@ -5,124 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Website</title>
   <link rel="stylesheet" href="thestyle.css"/>
- 
 
   
  <style>
-
-  
-    /* Add this to ensure responsiveness of your grid */
-    .button-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill,(220px, 1fr));
-      gap: 30px;
-      justify-content: center;
-      padding: 20px;
-      margin-top: 60px;
-      width: 100%;
-      max-width: 1000px;
-      box-sizing: border-box;
-    }
-
-    .hidden {
-  display: none !important;
-}
-
-    #about-section.show {
-      display: block;
-      opacity: 1;
-    }
-
-    #main-content.fade-out {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    #close-about {
-      margin-top: 20px;
-    }
-
-    #about-section-images {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: relative;
-  max-width: 800px;
-  margin: 20px auto 0;
-  z-index: 3;
-}
-
-#about-section-images.show {
-  display: block;
-  opacity: 1;
-}
-
-/* certification tech*/
-#certification-section.show {
-      display: block;
-      opacity: 1;
-    }
-
-    #main-content.fade-out {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    #close-certification {
-      margin-top: 20px;
-    }
-
-    #certification-section-images {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: relative;
-  max-width: 800px;
-  margin: 20px auto 0;
-  z-index: 3;
-}
-
-#certification-section-images.show {
-  display: block;
-  opacity: 1;
-}
-
-
-
-#resume-section.show {
-      display: block;
-      opacity: 1;
-    }
-
-    #main-content.fade-out {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    #close-resume {
-      margin-top: 20px;
-      margin-left: 70px;
-
-    }
-
-    #resume-section-images {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: center;
-  margin-top: 65px;
-  max-width: 800px;
-  max-height: 600px;
-  z-index: 3;
-}
-
-#resume-section-images.show {
-  display: block;
-  opacity: 1;
-}
 
   </style>
 </head>
@@ -208,7 +93,7 @@
 
 
   <!-- Wrapper to center everything -->
-  <div id="main-content" style="z-index:2; display:flex; flex-direction:column; align-items:center; width:100%; max-width:1100px; padding:20px; box-sizing:border-box;">
+  <div id="main-content">
     <header>
       <h1>Jon (ﾉ◕ヮ◕)ﾉ<span class="sparkle">*:･ﾟ✧</span> Chen </h1>
     </header>
@@ -246,7 +131,7 @@
     </div>
 
 <div>
-  <p id="visit-counter" style="z-index:2; position:relative; font-size: 1.2rem; color: white;">Loading visits...</p>
+  <p id="visit-counter" >Loading visits...</p>
 </div>
 
   </div>
@@ -440,6 +325,7 @@ function toggleResume() {
 
 
   // Fade out main
+
   main.classList.add('fade-out');
   hud.classList.add('fade-out');
 
