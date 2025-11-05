@@ -66,6 +66,13 @@ header h1 {
     padding: 0;
 }
 
+
+
+
+
+
+
+
 /* =========================
    BUTTON GRID
    ========================= */
@@ -130,6 +137,12 @@ header h1 {
     text-align: center;
 }
 
+
+
+
+
+
+
 /* =========================
    DARK MODE
    ========================= */
@@ -191,6 +204,14 @@ body.dark-mode #toggle-theme:hover {
     transform: scale(1.05);
 }
 
+
+
+
+
+
+
+
+
 /* =========================
    SPARKLE TEXT
    ========================= */
@@ -223,6 +244,12 @@ body.dark-mode *:not(.sparkle) {
 body, .box, .background-image, h1, p, button {
     transition: background-color 0.5s ease, color 0.5s ease, filter 0.5s ease;
 }
+
+
+
+
+
+
 
 /* =========================
    ABOUT SECTION
@@ -333,6 +360,11 @@ body, .box, .background-image, h1, p, button {
 }
 
 
+
+
+
+
+
 /* =========================
    CERTIFICATION SECTION
    ========================= */
@@ -384,6 +416,16 @@ body, .box, .background-image, h1, p, button {
         padding-left: 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
 /* =========================
    RESUME SECTION
    ========================= */
@@ -484,6 +526,291 @@ body, .box, .background-image, h1, p, button {
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
+
+
+
+
+
+
+
+
+
+/* =========================
+   REVIEW SECTION
+   ========================= */
+/* =========================
+   REVIEW SECTION & IMAGES
+   ========================= */
+#review-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 1000px;
+    padding: 20px;
+    margin: 0 auto 60px auto;
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+    pointer-events: auto; /* section itself interactive */
+    user-select: text;    /* allow text selection */
+    
+}
+
+#review-section.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Overlay for images, keep clicks passing through except content */
+#review-section-images {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 50px;
+    left: 50%;                 /* currently centered */
+    transform: translateX(100px);  /* shift right by 100px */
+    width: 100%;
+    max-width: 800px;
+    max-height: 600px;
+    height: calc(100vh - 70px);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    flex-direction: column;
+    padding-top: 10px;
+    margin-top: 65px;
+    z-index: 999;
+    pointer-events: none;  /* important: allows buttons below to be clickable */
+    
+    
+}
+
+/* Only content inside overlay is interactive */
+#review-section-images .review-content,
+#review-section-images .region-info {
+    pointer-events: auto; /* allow interaction with text & links */
+    user-select: text;    /* allow text selection */
+}
+
+#review-section-images.show {
+    display: block;
+    opacity: 1;
+}
+
+#review-section-images * {
+    user-select: text;
+}
+
+/* =========================
+   CLOSE BUTTON
+   ========================= */
+#close-review {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    background-color: rgba(170, 167, 167, 0.7);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.2s ease;
+    margin-top: 20px; /* merged */
+    margin-left: 70px; /* merged */
+}
+
+
+#close-review:hover {
+    transform: scale(1.05);
+    background-color: rgba(170, 167, 167, 0.9);
+}
+/* Base button styling - stacked vertically on left */
+#Nor-Cal,
+#So-Cal,
+#Other-Places {
+  display: block;                  /* stack vertically */
+  position: fixed;                 /* fixed to viewport */
+  left: 20px;                      /* distance from left */
+  z-index: 10000;                  /* above most elements */
+  width: 160px;                    /* fixed width */
+  height: 50px;                    /* fixed height */
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, rgba(150,150,150,0.8), rgba(80,80,80,0.9));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  margin-bottom: 10px;             /* space between buttons */
+}
+
+/* Hover effects */
+#Nor-Cal:hover,
+#So-Cal:hover,
+#Other-Places:hover {
+  transform: translateX(0) scale(1.07);
+  background: linear-gradient(135deg, rgba(190,190,190,0.9), rgba(100,100,100,1));
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Individual vertical positions relative to bottom if needed */
+#Nor-Cal {
+  bottom: 500px;                    /* slightly above summary box */
+}
+
+#So-Cal {
+  bottom: 400px;                   /* stacked above Nor-Cal */
+}
+
+#Other-Places {
+  bottom: 300px;                   /* stacked above So-Cal */
+}
+
+
+
+/* =========================
+   REGION INFO SECTIONS
+   ========================= */
+/* =========================
+   REVIEW CONTENT / REGION INFO
+   ========================= */
+
+ .review-content,
+.region-info {
+  position: relative;
+  margin: 0;                /* remove margins when hidden */
+  opacity: 0;
+  left:60px;
+  transform: translateY(15px);
+  max-height: 0;            
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0;               /* remove padding when hidden */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  z-index: 5;
+  width: calc(100% - 240px);
+  transition: 
+    opacity 0.4s ease, 
+    transform 0.3s ease, 
+    max-height 0.4s ease, 
+    margin 0.4s ease, 
+    padding 0.4s ease;
+}
+
+.review-content.show,
+.region-info.show {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 9000px;        /* realistic max-height to fit your content */
+  padding: 1.5rem;          /* restore padding */
+  margin-top: 2rem;         /* restore margin */
+  margin-left: 115px;       /* restore margin */
+  pointer-events: auto;
+}
+
+
+
+.region-summary {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 14px;             /* minimal padding */
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.2;             /* tighter line spacing */
+  max-width: 220px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  transition: opacity 0.4s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  z-index: 9999;
+  white-space: pre-wrap;        /* allows \n for multiple lines */
+  display: flex;                /* use flex to center text */
+  align-items: center;          /* vertically center text */
+  justify-content: flex-start;  /* align text left horizontally */
+  text-align: left;
+}
+
+.region-summary * {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;             /* ensure child spans/lines don’t add extra space */
+}
+
+
+/* Optional: remove margins from inner text elements */
+.region-summary * {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.region-summary.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.region-summary.hidden {
+  display: none;
+}
+
+
+
+/* =========================
+   PDF / Iframe Wrapper
+   ========================= */
+.iframe-wrapper {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90vh;
+}
+
+.iframe-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
