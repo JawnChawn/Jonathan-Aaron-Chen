@@ -778,6 +778,51 @@ body, .box, .background-image, h1, p, button {
 
 
 
+
+
+/* =========================
+   MAIN DESCRIPTION REVIEW
+   ========================= */
+#main-description-review {
+  position: relative;
+  margin-left: 115px;
+  left: 60px;
+  opacity: 0;
+  transform: translateY(15px);
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  z-index: 5;
+  width: calc(100% - 240px);
+  transition: 
+    opacity 0.4s ease, 
+    transform 0.3s ease, 
+    max-height 0.4s ease, 
+    margin 0.4s ease, 
+    padding 0.4s ease;
+}
+
+#main-description-review.show {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 9000px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  pointer-events: auto;
+}
+
+
+
+
+
 /* =========================
    PDF / Iframe Wrapper
    ========================= */

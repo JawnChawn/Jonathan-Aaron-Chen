@@ -85,6 +85,7 @@
 </div>
 
 
+
   <!-- Hidden content sections -->
  <div id="norcal-review" class="review-content">
   <h3>Nor-Cal Food & Activities Review</h3>
@@ -117,7 +118,7 @@
     <li>☕️💛 Vinhouse</li>
     <li>❓ Ebisu</li>
     <li>💛 Oz Korean BBQ</li>
-    <li>💛 Rose Tea (open late)</li>
+    <li>🧋💛 Rose Tea (open late)</li>
   </ul>
 
   <h4>Elk Grove - Shopping</h4>
@@ -135,13 +136,13 @@
     <li>🔷 Mandro Teahouse</li>
     <li>🧋🔷 ChaChaGo</li>
     <li>💛 Haidilao</li>
-    <li>🔻 Meet Fresh (Shaved Ice)</li>
+    <li>🔷 Meet Fresh (Shaved Ice)</li>
     <li>🔷 Halal Guys</li>
   </ul>
 
   <h4>Fremont - Activities</h4>
   <ul>
-    <li>Fremont Park (Indians)</li>
+    <li>Fremont Park </li>
   </ul>
 
   <!-- HAYWARD -->
@@ -317,6 +318,16 @@
     <h3>Other Places</h3>
     <p>Details about other areas, collaborations, or projects done outside California.</p>
   </div>
+</div>
+
+
+<div id="main-description-review" class="region-info">
+  <h3>California Food & Activities Review</h3>
+  <p>
+    Welcome to my curated list of food and experiences across California.  
+    Choose a region to explore personal ratings, notes, and hidden gems. 
+  </p>
+   <p>💛 Best in city ・ 🔷 Good ・ 🔻 Meh ・ 🟤 Avoid ・ ⭐ Michelin</p>
 </div>
 
 <div id="review-section-images">
@@ -632,11 +643,10 @@ function toggleReviews() {
   const review = document.getElementById('review-section');
   const images = document.getElementById('review-section-images');
   const body = document.body;
-  const hud = document.querySelector('.hud-controls');
 
   // Fade out main
   main.classList.add('fade-out');
-  hud.classList.add('fade-out');
+  document.querySelector('.hud-controls').classList.add('fade-out');
 
   // Hide from flow after fade
   setTimeout(() => {
@@ -648,8 +658,16 @@ function toggleReviews() {
     review.classList.add('show');
     images.classList.add('show');
     body.classList.add('review-mode');
+
+    // ✅ Show main description by default
+    mainDescriptionReview.classList.add('show');
+
+    // Reset active section so no region is open
+    activeSection = null;
+
   }, 500);
 }
+
 // =========================
 // FIXED CLOSE BUTTON HANDLER
 // =========================
@@ -695,6 +713,9 @@ const infoSections = {
   "Other-Places": document.getElementById('other-info')
 };
 
+// Reference main description review
+const mainDescriptionReview = document.getElementById('main-description-review');
+
 // New: region summary reference
 const regionSummary = document.getElementById('region-summary');
 const regionSummaryText = document.getElementById('region-summary-text');
@@ -708,11 +729,17 @@ regionButtons.forEach(button => {
     // Hide all sections first
     Object.values(infoSections).forEach(sec => sec.classList.remove('show'));
 
+    // Hide main description when opening a region
+    mainDescriptionReview.classList.remove('show');
+
     // Toggle logic (close same region if clicked again)
     if (activeSection === section) {
       activeSection = null;
       regionSummary.classList.remove('show');
       setTimeout(() => regionSummary.classList.add('hidden'), 300);
+
+      // Show main description again if all closed
+      setTimeout(() => mainDescriptionReview.classList.add('show'), 300);
       return;
     }
 
